@@ -13,10 +13,52 @@
     <title>Vanilla Weather App</title>
   </head>
   <body>
-    <h1>Vanilla Weather App</h1>
-    <div class="container">
-      <a href="" class="btn btn-primary">Click Me</a>
-    </div>
+    <dive class="weather-app">
+      <div class="container">
+        <form>
+          <div class="row">
+            <dive class="col-9">
+              <input
+                type="search"
+                placeholder="Enter City Name"
+                class="form-control search-input"
+              />
+            </dive>
+            <dive class="col-3 p-0">
+              <input
+                type="submit"
+                class="btn btn-primary w-100"
+                value="Search"
+              />
+            </dive>
+          </div>
+        </form>
+        <div class="WeatherDetail">
+          <div class="row">
+            <div class="col-6">
+              <h1 class="city">Istanbul</h1>
+              <ul>
+                <li>
+                  <span> Sunday 17:45 </span>
+                  , Light Snow
+                </li>
+                <li>
+                  Humidity
+                  <strong> 81% </strong>
+                  , Wind:
+                  <strong> 14.4 km/h </strong>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <span class="temprature">11</span>
+              <span class="unit">°C/F</span>
+            </div>
+          </div>
+          <footer>Open-source code by Azadeh</footer>
+        </div>
+      </div>
+    </dive>
   </body>
   <script src="src/index.js"></script>
 </html>

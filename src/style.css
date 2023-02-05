@@ -1,3 +1,33 @@
-h1 {
-  color: rgb(214, 0, 114);
+body {
+  background: #f9f7fe;
+}
+
+.weather-app {
+  display: block;
+  margin: 60px auto;
+  max-width: 800px;
+  border: black solid;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 30px 50px rgb(65 50 100 / 8%);
+  color: #878787;
+  font-family: Cerebri-Sans, Helvetica, Arial, sans-serif;
+  padding: 40px;
+}
+
+.city {
+  color: #272142;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 29px;
+  line-height: 48px;
+  margin: 20px 0 10px;
+}
+.temprature {
+  color: #212121;
+  font-size: 80px;
+  font-weight: 400;
+  font-weight: 700;
+  line-height: 1;
+  margin-left: 10px;
 }
