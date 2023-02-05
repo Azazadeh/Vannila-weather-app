@@ -81,3 +81,13 @@ form {
   line-height: 1;
   margin-left: 10px;
 }
+.weather-app footer {
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 40px;
+  text-align: center;
+}
+.weather-app footer a {
+  color: #885df1;
+}
