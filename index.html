@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -36,7 +36,7 @@
         <div class="WeatherDetail">
           <div class="row">
             <div class="col-6">
-              <h1 class="city">Istanbul</h1>
+              <h1 class="city" id="city">Tehran</h1>
               <ul>
                 <li>
                   <span> Sunday 17:45 </span>
@@ -51,22 +51,24 @@
               </ul>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
               <div class="row">
-                <div class="col-6"></div>
-                <div class="col-6">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
                   <div class="row">
-                    <div class="col-md-6 temperature-container justify-content-end image">
+                    <div
+                      class="col-md-3 temperature-container justify-content-end image"
+                    >
                       <img
                         src="https://ssl.gstatic.com/onebox/weather/64/sleet.png"
                         alt="Rain and snow"
                       />
                     </div>
                     <div
-                      class="col-md-6 temperature-container d-flex justify-content-end"
+                      class="col-md-8 temperature-container d-flex justify-content-end"
                     >
-                      <span class="temperature">6</span
-                      ><span class="unit">°C</span>
+                      <span class="temperature" id="temperature"></span
+                      ><span class="unit">°C | °F</span>
                     </div>
                   </div>
                 </div>
