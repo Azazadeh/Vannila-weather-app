@@ -47,7 +47,19 @@ function showTemp(response) {
 
   console.log(response.data);
 }
-let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
-let apiUrl = `https://api.shecodes.io/weather/v1/current?query=Seoul&key=39e003bc66b7f35722e0c7a5dt3o9140&units=metric`;
 
-axios.get(apiUrl).then(showTemp);
+function search(city) {
+  let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+}
+search("Berlin");
+
+function showSubmit(event) {
+  event.preventDefault();
+  let citySearch = document.querySelector("#city-search");
+  search(citySearch.value);
+}
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", showSubmit);
