@@ -37,6 +37,7 @@ function showTemp(response) {
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let date = document.querySelector("#date");
+  let icon = document.querySelector("#icon");
 
   city.innerHTML = response.data.city;
   temperature.innerHTML = Math.round(response.data.temperature.current);
@@ -44,8 +45,8 @@ function showTemp(response) {
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = response.data.wind.speed;
   date.innerHTML = formatDate(response.data.time * 1000);
-
-  console.log(response.data);
+  icon.setAttribute("src", response.data.condition.icon_url);
+  icon.setAttribute("alt", response.data.condition.description);
 }
 
 function search(city) {
@@ -53,7 +54,6 @@ function search(city) {
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
-search("Berlin");
 
 function showSubmit(event) {
   event.preventDefault();
@@ -63,3 +63,5 @@ function showSubmit(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", showSubmit);
+
+search("Berlin");
