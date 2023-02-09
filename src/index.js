@@ -64,9 +64,20 @@ function showSubmit(event) {
 
 function showFahrenheitTemp(event) {
   event.preventDefault();
-  let fahrenheitFormula = celsiusTemp * 1.8 + 32;
   let temperature = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheitFormula = celsiusTemp * 1.8 + 32;
+
   temperature.innerHTML = Math.round(fahrenheitFormula);
+}
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
+  temperature.innerHTML = Math.round(celsiusTemp);
 }
 
 let celsiusTemp = null;
@@ -76,5 +87,8 @@ form.addEventListener("submit", showSubmit);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemp);
 
 search("Berlin");

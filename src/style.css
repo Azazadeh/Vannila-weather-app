@@ -1,15 +1,25 @@
 body {
   background: #f9f7fe;
 }
+
 form {
   display: block;
   border-bottom: 1px solid #f9f7fe;
   margin-top: 20px;
   padding-bottom: 30px;
 }
+a {
+  text-decoration: none;
+}
+
 li ::first-letter {
   text-transform: capitalize;
 }
+
+.active {
+  color: #212121;
+}
+
 .weather-app {
   display: block;
   margin: 60px auto;
@@ -49,7 +59,7 @@ li ::first-letter {
   padding: 15px 0;
 }
 .city {
-  color: #272142;
+  color: #212121;
   font-size: 38px;
   font-weight: 700;
   line-height: 29px;
