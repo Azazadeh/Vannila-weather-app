@@ -39,8 +39,9 @@ function showTemp(response) {
   let date = document.querySelector("#date");
   let icon = document.querySelector("#icon");
 
+  celsiusTemp = response.data.temperature.current;
   city.innerHTML = response.data.city;
-  temperature.innerHTML = Math.round(response.data.temperature.current);
+  temperature.innerHTML = Math.round(celsiusTemp);
   currentCondition.innerHTML = response.data.condition.description;
   humidity.innerHTML = response.data.temperature.humidity;
   wind.innerHTML = response.data.wind.speed;
@@ -61,7 +62,19 @@ function showSubmit(event) {
   search(citySearch.value);
 }
 
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let fahrenheitFormula = celsiusTemp * 1.8 + 32;
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(fahrenheitFormula);
+}
+
+let celsiusTemp = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", showSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
 search("Berlin");
