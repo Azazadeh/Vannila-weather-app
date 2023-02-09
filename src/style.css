@@ -3,13 +3,13 @@ body {
 }
 
 form {
-  display: block;
   border-bottom: 1px solid #f9f7fe;
   margin-top: 20px;
   padding-bottom: 30px;
 }
 a {
   text-decoration: none;
+  color: #f65282;
 }
 
 li ::first-letter {
@@ -17,7 +17,7 @@ li ::first-letter {
 }
 
 .active {
-  color: #212121;
+  color: rgb(39, 33, 66);
 }
 
 .weather-app {
@@ -59,7 +59,7 @@ li ::first-letter {
   padding: 15px 0;
 }
 .city {
-  color: #212121;
+  color: rgb(39, 33, 66);
   font-size: 38px;
   font-weight: 700;
   line-height: 29px;
@@ -87,7 +87,7 @@ li ::first-letter {
   font-weight: 400;
 }
 .temperature {
-  color: #212121;
+  color: rgb(39, 33, 66);
   font-size: 80px;
   font-weight: 400;
   font-weight: 700;
@@ -95,24 +95,19 @@ li ::first-letter {
   margin-left: 10px;
 }
 .unit {
-  color: #212121;
-
+  color: rgb(39, 33, 66);
+  font-size: 18px;
   font-weight: 400;
   line-height: 36px;
   line-height: 1;
   position: relative;
   top: 13px;
 }
-.col-6 {
-  flex: 0 0 auto;
-  width: 50%;
-}
+
 .temperature-container {
   margin-top: 30px;
 }
-.image {
-  margin-top: 45px;
-}
+
 .weather-app footer {
   color: rgba(39, 33, 66, 0.4);
   font-size: 14px;
