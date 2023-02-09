@@ -60,6 +60,8 @@ function showSubmit(event) {
   event.preventDefault();
   let citySearch = document.querySelector("#city-search");
   search(citySearch.value);
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
 
 function showFahrenheitTemp(event) {
@@ -68,7 +70,6 @@ function showFahrenheitTemp(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let fahrenheitFormula = celsiusTemp * 1.8 + 32;
-
   temperature.innerHTML = Math.round(fahrenheitFormula);
 }
 function showCelsiusTemp(event) {
@@ -76,7 +77,6 @@ function showCelsiusTemp(event) {
   let temperature = document.querySelector("#temperature");
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-
   temperature.innerHTML = Math.round(celsiusTemp);
 }
 
@@ -88,9 +88,7 @@ form.addEventListener("submit", showSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemp);
 
-
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 search("Berlin");
-
