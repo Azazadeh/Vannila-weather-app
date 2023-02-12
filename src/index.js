@@ -1,3 +1,5 @@
+"use strict";
+
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let hours = date.getHours();
