@@ -23,10 +23,19 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-function showForecast() {
+  return days[day];
+}
+function showForecast(response) {
+  console.log(response.data.daily);
+
   let forecast = document.querySelector("#forecast");
-  let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri" , "Sat"];
+
+  let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = `<div class="row"> `;
 
   forecastdays.forEach(function (day) {
@@ -36,7 +45,8 @@ function showForecast() {
                 <div class="forecast-date">${day}</div>
                 <img
                   src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                  alt="partly_cloudy"
+                  alt=""
+                  width="45"
                 />
                 <div class="forecast-temp">
                   <span class="forecast-temp-max"> 8° </span>
@@ -47,14 +57,7 @@ function showForecast() {
   });
   forecastHtml = forecastHtml + `</div>`;
   forecast.innerHTML = forecastHtml;
-}
-
-function formatDay(timestamp) {
-  let date = new Date(timestamp * 1000);
-  let day = date.getDay();
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-  return days[day];
+  
 }
 
 function showTemp(response) {
@@ -75,12 +78,19 @@ function showTemp(response) {
   date.innerHTML = formatDate(response.data.time * 1000);
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.description);
+  getForecast(response.data.city);
 }
 
 function search(city) {
   let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
+}
+function getForecast(city) {
+  let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(showForecast);
 }
 
 function showSubmit(event) {
@@ -119,4 +129,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemp);
 
 search("Berlin");
-showForecast();
