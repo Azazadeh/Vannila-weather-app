@@ -38,12 +38,14 @@ function showForecast(response) {
   // let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = `<div class="row"> `;
 
-  weatherForecast.forEach(function (forecastDay , index) {
+  weatherForecast.forEach(function (forecastDay, index) {
     if (index < 6) {
-    forecastHtml =
-      forecastHtml +
-      `<div class="col-2">
-                <div class="forecast-date">${formatForecastDay(forecastDay.time)}</div>
+      forecastHtml =
+        forecastHtml +
+        `<div class="col-2">
+                <div class="forecast-date">${formatForecastDay(
+                  forecastDay.time
+                )}</div>
                 <img
                   src="${forecastDay.condition.icon_url}"
                   alt="${forecastDay.condition.description}"
@@ -58,7 +60,8 @@ function showForecast(response) {
                   )}° </span>
                 </div>
               
-          </div> `;}
+          </div> `;
+    }
   });
   forecastHtml = forecastHtml + `</div>`;
   forecast.innerHTML = forecastHtml;
@@ -105,31 +108,9 @@ function showSubmit(event) {
   celsiusLink.classList.add("active");
 }
 
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitFormula = celsiusTemp * 1.8 + 32;
-  temperature.innerHTML = Math.round(fahrenheitFormula);
-}
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
-  temperature.innerHTML = Math.round(celsiusTemp);
-}
-
 let celsiusTemp = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", showSubmit);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
-
-search("Berlin");
+search("Istanbul");
