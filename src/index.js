@@ -23,7 +23,7 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
-function formatDay(timestamp) {
+function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -31,33 +31,37 @@ function formatDay(timestamp) {
   return days[day];
 }
 function showForecast(response) {
-  console.log(response.data.daily);
+  let weatherForecast = response.data.daily;
 
   let forecast = document.querySelector("#forecast");
 
-  let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  // let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = `<div class="row"> `;
 
-  forecastdays.forEach(function (day) {
+  weatherForecast.forEach(function (forecastDay , index) {
+    if (index < 6) {
     forecastHtml =
       forecastHtml +
       `<div class="col-2">
-                <div class="forecast-date">${day}</div>
+                <div class="forecast-date">${formatForecastDay(forecastDay.time)}</div>
                 <img
-                  src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
-                  alt=""
+                  src="${forecastDay.condition.icon_url}"
+                  alt="${forecastDay.condition.description}"
                   width="45"
                 />
                 <div class="forecast-temp">
-                  <span class="forecast-temp-max"> 8° </span>
-                  <span class="forecast-temp-min"> 0° </span>
+                  <span class="forecast-temp-max"> ${Math.round(
+                    forecastDay.temperature.maximum
+                  )}° </span>
+                  <span class="forecast-temp-min"> ${Math.round(
+                    forecastDay.temperature.minimum
+                  )}° </span>
                 </div>
               
-          </div> `;
+          </div> `;}
   });
   forecastHtml = forecastHtml + `</div>`;
   forecast.innerHTML = forecastHtml;
-  
 }
 
 function showTemp(response) {
