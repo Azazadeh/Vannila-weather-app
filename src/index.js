@@ -1,4 +1,5 @@
 "use strict";
+//Format timestamp into time and day for current time.
 
 function formatDate(timestamp) {
   let date = new Date(timestamp);
@@ -23,6 +24,8 @@ function formatDate(timestamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+//Format timestamp into days for forecast.
+
 function formatForecastDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -30,12 +33,13 @@ function formatForecastDay(timestamp) {
 
   return days[day];
 }
+//Show forecast data from API and loop through each day.
 function showForecast(response) {
   let weatherForecast = response.data.daily;
 
   let forecast = document.querySelector("#forecast");
 
-  // let forecastdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+ 
   let forecastHtml = `<div class="row"> `;
 
   weatherForecast.forEach(function (forecastDay, index) {
@@ -67,6 +71,8 @@ function showForecast(response) {
   forecast.innerHTML = forecastHtml;
 }
 
+// Get temperature and related details of the searched city from API and display it.
+
 function showTemp(response) {
   let city = document.querySelector("#city");
   let temperature = document.querySelector("#temperature");
@@ -87,30 +93,34 @@ function showTemp(response) {
   icon.setAttribute("alt", response.data.condition.description);
   getForecast(response.data.city);
 }
-
+//API call by city name
 function search(city) {
   let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 }
+//API call for forecast by city name
 function getForecast(city) {
   let apiKey = "39e003bc66b7f35722e0c7a5dt3o9140";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showForecast);
 }
-
+//City search function call 
 function showSubmit(event) {
   event.preventDefault();
   let citySearch = document.querySelector("#city-search");
   search(citySearch.value);
-  fahrenheitLink.classList.remove("active");
-  celsiusLink.classList.add("active");
 }
 
 let celsiusTemp = null;
 
+// Get the search form element and add an event listener that listens for the "submit" event.
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", showSubmit);
 
-search("Istanbul");
+//Default city function call
+  search("Istanbul");
+
+
+
